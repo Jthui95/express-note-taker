@@ -16,14 +16,14 @@ app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
   
-fs.readFile("../Develop/db/db.json", "utf8", function (err,data){
+fs.readFile("./db/db.json", "utf8", function (err,data){
     if (err) { 
     throw (err);
     }
     var notes = JSON.parse(data);
 
     function updateNotes() {
-      fs.writeFile("../Develop/db/db.json", JSON.stringify(notes,"\t"), function(error) {
+      fs.writeFile("./db/db.json", JSON.stringify(notes,"\t"), function(error) {
           if (error) { 
                throw error;
           }
@@ -72,11 +72,11 @@ fs.readFile("../Develop/db/db.json", "utf8", function (err,data){
 
 // view routes
 app.get("/notes", function(req, res) {
-    res.sendFile(path.join(__dirname, "../Develop/public/notes.html"));
+    res.sendFile(path.join(__dirname, "./public/notes.html"));
   });
   
   app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "../Develop/public/index.html"));
+    res.sendFile(path.join(__dirname, "./public/index.html"));
   });
   
   
