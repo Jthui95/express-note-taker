@@ -41,6 +41,8 @@ fs.readFile("./db/db.json", "utf8", function (err,data){
     // sets up post route
     app.post("/api/notes", function (req,res) {
         let newNote = req.body;
+        let id = (notes.length).toString();
+        newNote.id = id
         notes.push(newNote);
         res.json(newNote);
         updateNotes();
